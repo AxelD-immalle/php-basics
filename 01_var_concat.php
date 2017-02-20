@@ -4,10 +4,12 @@
 // Plak de variabelen aan elkaar met de string-concatenatie-operator en zet het antwoord in $naam.
 // Toon het resultaat op de gerenderde html-pagina.
 
-$voornaam = ;
-$achternaam
+$voornaam = "Axel";
+$achternaam = "Dries";
 
-$naam = 
+$naam = $voornaam . " " . $achternaam;
+
+echo $naam;
 
 
 
