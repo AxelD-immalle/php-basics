@@ -1,7 +1,7 @@
 <?php
 
 // gegeven: een dictionary AKA associative array AKA key-value-datastructuur
-
+$woord = "appels";
 
 $scrabble = array(
     "A" => 1,
@@ -34,16 +34,30 @@ $scrabble = array(
 
 // gevraagd: Zorg dat de functie show alle keys en values afdrukt. Maak gebruik van een foreach-loop. Extra: zorg dat de volgorde oplopend is naar aantal punten per letter.
 
-funcion show($assray) {
-
+function show($assray) {
+    echo "<ul>";
+    asort($assray); // sorteer value ascending (andere: arsort, ksort, krsort)
+    foreach($assray as $key => $val) {
+        echo "<li>" . $key . " => " . $val . "</li>";
+    }
+    echo "</ul>";
 }
-
 
 // gevraagd: Vul de functie verder aan zodat ze het totaal behaalde punten returnt. De code kan sterk vereenvoudigd (i.v.m. switch/case) door op de gepaste manier gebruik de maken van bovenstaande associatieve array.
 
 function punten($woord) {
-
-    return 0;
+    global $scrabble; // http://php.net/manual/en/language.variables.scope.php
+    $punten = 0;
+    echo "<p>We zoeken de punten van het woord: $woord</p>";
+    echo "<ul>";
+    for($i=0; $i<strlen($woord); $i++) {
+        $letter = strtoupper($woord[$i]); // in $scrabble zitten enkel hoofdletters, dus converteer
+        $letterpunt = $scrabble[$letter];
+        echo "<li>De letter $letter is $letterpunt punten waard.</li>";
+        $punten += $letterpunt;
+    }
+    echo "</ul>";
+    return $punten;
 }
 
 // gevraagd: Print van enkele woorden de punten af met bovenstaande functie.
